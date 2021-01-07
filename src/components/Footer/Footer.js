@@ -1,7 +1,10 @@
+import styles from './Footer.module.css'
 
 const Footer = (props) => {
     return (
-        <div>Footer</div>
+        <footer className={styles.Footer}>
+            <p>Copyright &copy; All Rights Reserved {new Date().getFullYear()} - Project 3</p>
+        </footer>
     )
 }
 
