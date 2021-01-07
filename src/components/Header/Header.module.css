@@ -4,17 +4,22 @@
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    color: white;
     box-shadow: 3px 3px 5px 3px lightgray;
 }
 
 .Header > nav > ul {
     display: flex;
-    /* Removes bullet points */
+    /* REMOVES BULLET POINTS */
     list-style: none;
 }
 
 .Header > nav > ul li {
     margin-right: 20px;
     font-size: 25px;
+}
+
+/* FOR LINKS */
+.Header a {
+    text-decoration: none;
+    color: white;
 }

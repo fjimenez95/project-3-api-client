@@ -1,7 +1,9 @@
+import SignupForm from '../../components/SignupForm/SignupForm';
+
 function SignupPage(props) {
     return (
         <div>
-            SignupPage
+            <SignupForm />
         </div>
     )
 }
