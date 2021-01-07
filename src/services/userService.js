@@ -1,5 +1,8 @@
+import { setToken } from './tokenService';
+
 // DECLARE  A VARIABLE FOR URL TO OUR API
 const BASE_URL = 'http://localhost:3002/api/users';
+
 
 // DEFINE FUNCTIONS FOR MAKING AJAX REQUESTS
 function signup(user) {
@@ -15,7 +18,7 @@ function signup(user) {
         // Error handling scenario
         throw new Error('Email already taken!');
    })
-   .then(data => console.log(data))
+   .then(data => setToken(data.token))
 }
 
 function login(credentials) {

@@ -35,7 +35,6 @@ function App() {
           } />
           <Route exact path='/signup' render={(props) =>
             <SignupPage
-            // Not sure I understand this?? Programatic routing!!
               {...props}
             />
           } />
