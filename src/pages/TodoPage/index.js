@@ -7,6 +7,7 @@ function TodoPage(props) {
             <Link to='/todos/create'><button>Create New Todo</button></Link>
             <TodoTable 
                 todos={props.todos}
+                deleteHandler={props.deleteHandler}
             />
         </div>
     )

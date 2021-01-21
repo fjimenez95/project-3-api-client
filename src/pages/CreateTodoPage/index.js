@@ -1,10 +1,16 @@
 import TodoForm from '../../components/TodoForm';
+import { createTodo } from '../../services/todoService';
 
 function CreateTodoPage(props) {
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data));
-    };
+    // const onSubmit = (data) => {
+    //     alert(JSON.stringify(data));
+    //     async function createANewTodo() {
+    //         const todos = await createTodo(data);
+    //         console.log('TODOS', todos);
+    //         setUserTodos(todos);
+    //     }
+    // };
 
 
     return (
@@ -12,7 +18,7 @@ function CreateTodoPage(props) {
             <div className='mt-3'>
                 <h3>Create Todo Item</h3>
                 <TodoForm 
-                    onSubmit={onSubmit}
+                    onCreateSubmit={props.onCreateSubmit}
                     type={'Create'} 
                 /> 
             </div>

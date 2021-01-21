@@ -11,9 +11,6 @@ function EditTodoPage(props) {
         })
     }, [])
 
-    const onSubmit = (data) => {
-        alert(JSON.stringify(data));
-    }
 
     return todo ? (
         <div>
@@ -21,7 +18,7 @@ function EditTodoPage(props) {
                 <h3>Edit Todo Item</h3>
                 <TodoForm 
                     todo={todo} 
-                    onSubmit={onSubmit} 
+                    onEditSubmit={props.onEditSubmit} 
                     type={'Edit'}
                 /> 
             </div>

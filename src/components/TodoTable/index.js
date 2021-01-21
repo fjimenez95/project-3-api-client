@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTodos } from '../../services/todoService';
+import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 
 const TodoTable = (props) => {
-    const [items, setItems] = useState([]);
 
-    async function fetchItems() {
-        const todos = await getTodos();
-        setItems(todos);
-    }
+    const {register, handleSubmit} = useForm({ defaultValues: { text: props.todo ? props.todo.text : "" } });
+    const history = useHistory();
 
-    useEffect(() => {
-        fetchItems();
-    }, [])
-
+    const deleteTodo = handleSubmit((data) => {
+        alert(JSON.stringify(data));
+    })
 
     return (
         <div>
@@ -27,19 +25,19 @@ const TodoTable = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {/* {
-                    items.map(todo => (
-                        <tr key={todo._id}>
+                {
+                    props.todos.map((todo, idx) => (
+                        <tr key={idx}>
                             <td>{todo.text}</td>
                             <td>
-                                <Link to={`/todos/edit/${todo.id}`}><button className="button muted-button">Edit</button></Link>
+                                <Link to={`/todos/edit/${todo._id}`}><button className="button muted-button">Edit</button></Link>
                             </td>
                             <td>
-                                <button className="button muted-button">Delete</button>
+                                <button type='submit' onClick={deleteTodo} className='btn btn-primary'>Delete</button>
                             </td>
                         </tr>
                     ))
-                } */}
+                }
             </tbody>
         </table>
       </div>

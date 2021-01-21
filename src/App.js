@@ -1,5 +1,5 @@
 import { getUser, logout } from './services/userService';
-import { useState, Redirect } from 'react';
+import { useState, Redirect, useEffect } from 'react';
 
 import './App.css';
 import Footer from './components/Footer/Footer';
@@ -14,6 +14,7 @@ import SignupPage from './pages/SignupPage';
 import TodoPage from './pages/TodoPage';
 import EditTodoPage from './pages/EditTodoPage';
 import CreateTodoPage from './pages/CreateTodoPage';
+import { getTodos, createTodo } from './services/todoService';
 
 // 1. Create four page components, Login, Signup, Dashboard, Home
 // 2. Define as a function component and export them
@@ -25,7 +26,20 @@ function App(props) {
 
   const [ userState, setUserState ] = useState({
     user: getUser(),
-  })
+  });
+  const [ userTodos, setUserTodos ] = useState([]);
+
+  useEffect(() => {
+    if(userState.user) {
+      fetchItems();
+    }
+  }, [userState.user])  
+  
+  async function fetchItems() {
+      const todos = await getTodos();
+      console.log('TODOS', todos);
+      setUserTodos(todos);
+  }
 
   function handleSignupOrLogin() {
     setUserState({
@@ -38,6 +52,34 @@ function App(props) {
     setUserState({ user: null });
     // CAN USE THIS CAUSE OF WITHROUTER AND ADDING PROPS TO APP() ^
     props.history.push('/');
+  }
+
+  async function handleCreateSubmit(data) {
+    data.status = true;
+    let newItem = [];
+    newItem.push(data);
+    console.log(newItem);
+    alert(JSON.stringify(data));
+    const response = await createTodo(newItem);
+    console.log('RESPONSE FROM POST', response);
+    setUserTodos(response);
+    //setUserTodos(response.todos);
+  }
+
+  function handleEditSubmit(data) {
+    alert(JSON.stringify(data));
+  }
+  // const onSubmit = (data) => {
+  //   alert(JSON.stringify(data));
+  //   async function createANewTodo() {
+  //       const todos = await createTodo(data);
+  //       console.log('TODOS', todos);
+  //       setUserTodos(todos);
+  //   }
+  // };
+
+  function deleteHandler() {
+
   }
 
   return (
@@ -77,7 +119,8 @@ function App(props) {
           <Route exact path='/todos' render={(props) =>
             <TodoPage 
               {...props}
-              todos={userState.todos}
+              todos={userTodos}
+              deleteHandler={deleteHandler}
               />
           } />
 
@@ -85,6 +128,7 @@ function App(props) {
             <EditTodoPage 
               {...props}
               todos={userState.todos}
+              onEditSubmit={handleEditSubmit}
               />
           } />
 
@@ -92,6 +136,7 @@ function App(props) {
             <CreateTodoPage 
               {...props}
               todos={userState.todos}
+              onCreateSubmit={handleCreateSubmit}
               />
           } />  
         </Switch>

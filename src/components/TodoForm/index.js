@@ -7,7 +7,12 @@ const TodoForm = (props) => {
     const history = useHistory();
 
     const submitHandler = handleSubmit((data) => {
-        props.onSubmit(data);
+        if (props.type == 'Edit') {
+            props.onEditSubmit(data);
+        }
+        if (props.type == 'Create') {
+            props.onCreateSubmit(data);
+        }
         history.push('/todos');
     })
     
