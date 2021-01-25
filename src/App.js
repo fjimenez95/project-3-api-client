@@ -3,7 +3,7 @@ import { useState, Redirect, useEffect } from 'react';
 
 import './App.css';
 import Footer from './components/Footer/Footer';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, useHistory } from 'react-router-dom';
 // YOU CAN CHANGE THE FOOTER / HEADER FILES TO INDEX.JS AND YOU DON'T HAVE TO DO THE FINAL PREFIX /FOOTER BECAUSE SYSTEM WILL ALREADY KNOW TO LOOK FOR INDEX.JS
 import Header from './components/Header/Header';
 
@@ -23,6 +23,8 @@ import { getTodos, createTodo } from './services/todoService';
 // 5. Import Switch and Route components from React Router and then define the various routes
 
 function App(props) {
+
+  const history = useHistory();
 
   const [ userState, setUserState ] = useState({
     user: getUser(),
@@ -55,19 +57,15 @@ function App(props) {
   }
 
   async function handleCreateSubmit(data) {
-    data.status = true;
-    let newItem = [];
-    newItem.push(data);
-    console.log(newItem);
-    alert(JSON.stringify(data));
-    const response = await createTodo(newItem);
+    data.user = userState.user._id;
+    const response = await createTodo(data);
     console.log('RESPONSE FROM POST', response);
     setUserTodos(response);
-    //setUserTodos(response.todos);
+    history.push('/todos');
   }
 
-  function handleEditSubmit(data) {
-    alert(JSON.stringify(data));
+  function handleEditSubmitResponse(response) {
+    setUserTodos(response);
   }
   // const onSubmit = (data) => {
   //   alert(JSON.stringify(data));
@@ -79,7 +77,7 @@ function App(props) {
   // };
 
   function deleteHandler() {
-
+    
   }
 
   return (
@@ -121,6 +119,7 @@ function App(props) {
               {...props}
               todos={userTodos}
               deleteHandler={deleteHandler}
+              setUserTodos={setUserTodos}
               />
           } />
 
@@ -128,7 +127,7 @@ function App(props) {
             <EditTodoPage 
               {...props}
               todos={userState.todos}
-              onEditSubmit={handleEditSubmit}
+              setUserTodos={setUserTodos}
               />
           } />
 
