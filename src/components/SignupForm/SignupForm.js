@@ -27,8 +27,8 @@ function SignupForm (props) {
         try {
             event.preventDefault();
             await signup(formState);
-            setFormState(getInitialFormState());
-    
+            // setFormState(getInitialFormState());
+            props.handleSignupOrLogin();
             props.history.push('/dashboard');
         } catch (error) {
             console.log(error);

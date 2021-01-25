@@ -5,6 +5,7 @@ function SignupPage(props) {
         <div>
             <SignupForm 
                 {...props}
+                handleSignupOrLogin={props.handleSignupOrLogin}
             />
         </div>
     )
