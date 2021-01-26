@@ -4,7 +4,7 @@ import { getToken } from './tokenService';
 
 
 export function getTodos() {
-    return fetch('https://git.heroku.com/todos4teams.git/todos', {
+    return fetch('https://todos4teams.herokuapp.com/todos', {
     method: 'GET',
     headers: 
         {
@@ -16,7 +16,7 @@ export function getTodos() {
 }
 
 export function createTodo(todo) {
-  return fetch('https://git.heroku.com/todos4teams.git/todos/create', {
+  return fetch('https://todos4teams.herokuapp.com/todos/create', {
     method: 'POST',
     headers: 
         {
@@ -30,7 +30,7 @@ export function createTodo(todo) {
 }
 
 export function getTodo(id) {
-  return fetch(`https://git.heroku.com/todos4teams.git/todos/${id}`, {
+  return fetch(`https://todos4teams.herokuapp.com/todos/${id}`, {
     method: 'GET',
     headers: 
         {
@@ -42,7 +42,7 @@ export function getTodo(id) {
 }
 
 export function updateTodo(todo, id) {
-  return fetch(`https://git.heroku.com/todos4teams.git/todos/${id}`, {
+  return fetch(`https://todos4teams.herokuapp.com/todos/${id}`, {
     method: 'POST',
     headers: 
         {
@@ -56,7 +56,7 @@ export function updateTodo(todo, id) {
 }
 
 export function deleteTodo(id) {
-  return fetch(`https://git.heroku.com/todos4teams.git/todos/delete/${id}?_method=DELETE`, {
+  return fetch(`https://todos4teams.herokuapp.com/todos/delete/${id}?_method=DELETE`, {
     method: 'POST',
     headers: 
         {
