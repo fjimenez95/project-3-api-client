@@ -1,7 +1,7 @@
 import { setToken, getUserFromToken, removeToken } from './tokenService';
 
 // DECLARE  A VARIABLE FOR URL TO OUR API
-const BASE_URL = 'http://localhost:3002/api/users';
+const BASE_URL = 'https://git.heroku.com/todos4teams.git/api/users';
 
 
 // DEFINE FUNCTIONS FOR MAKING AJAX REQUESTS
