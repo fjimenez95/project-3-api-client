@@ -1,11 +1,12 @@
 import TodoForm from '../../components/TodoForm';
+import styles from './CreateTodoPage.module.css';
 
 function CreateTodoPage(props) {
 
      return (
         <div>
-            <div className='mt-3'>
-                <h3>Create Todo Item</h3>
+            <div>
+                <h3 className={styles.createTodoTitle}>Create Todo Item</h3>
                 <TodoForm 
                     onCreateSubmit={props.onCreateSubmit}
                     type={'Create'} 

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { updateTodo } from '../../services/todoService';
+import styles from './TodoForm.module.css';
 
 const TodoForm = (props) => {
     
@@ -27,15 +28,16 @@ const TodoForm = (props) => {
     })
     
     return (
-        <form onSubmit={submitHandler}>
+        <form className={styles.form} onSubmit={submitHandler}>
             <div className='form-group'>
-                <label htmlFor='text'>
-                    Text:
+                <label className={styles.textInputTitle} htmlFor='text'>
+                    enter text here
                 </label>
-                <input className='form-control' ref={register} type='text' name='text' id='text' />
+                <br />
+                <input className={styles.textInput} ref={register} type='text' name='text' id='text' />
             </div>
             <div className='form-group'>
-                <button type='submit' className='btn btm-primary'>{props.type} Todo</button>
+                <button type='submit' className={styles.button}>{props.type} Todo</button>
             </div>
         </form>
     )

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { login } from '../../services/userService';
+import styles from './LoginPage.module.css';
 
 
 function LoginPage (props) {
@@ -26,7 +27,7 @@ function LoginPage (props) {
             await login(formState);
             // setFormState(getInitialFormState());
             props.handleSignupOrLogin();
-            props.history.push('/dashboard');
+            props.history.push('/todos');
         } catch (error) {
             console.log(error);
         }
@@ -34,19 +35,28 @@ function LoginPage (props) {
 
 
     return (
-        <div className="Page">
-            <form onSubmit={handleSubmit}>
+        <div className={styles.page}>
+            <form className={styles.loginform} onSubmit={handleSubmit}>
+                <h3 className={styles.logintitle}>login</h3>
+                <div className={styles.textInputTitle}>username</div>
                 <input 
                     value={formState.email} 
+                    className={styles.textInput}
                     onChange={handleChange}
                     type='email'
                     name='email' />
+                <br />
+                <br />
+                    <div className={styles.textInputTitle}>password</div>
                 <input 
                     value={formState.password} 
                     onChange={handleChange}
+                    className={styles.textInput}
                     type='password' 
                     name='password' />
-                <button>
+                <br />
+                <br />
+                <button className={styles.button}>
                     Login
                 </button>
             </form>

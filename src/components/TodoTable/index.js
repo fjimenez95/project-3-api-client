@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { deleteTodo } from '../../services/todoService'
-
+import styles from './TodoTable.module.css';
 
 const TodoTable = (props) => {
 
@@ -22,27 +22,28 @@ const TodoTable = (props) => {
 
     return (
         <div>
-        <h3>Your List of Todos</h3>
         <table className='table table-striped mt-3'>
             <thead>
                 <tr>
-                    <th>To-Do</th>
-                    <th>Due Date</th>
-                    <th>Delete</th>
+                    <th></th>
+                    {/* <th className={styles.alignCenter}>Owner</th> */}
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 {
                     props.todos.map((todo, idx) => (
                         <tr key={todo._id}>
-                            <td>{todo.text}</td>
-                            <td>
-                                <Link to={`/todos/edit/${todo._id}`}><button className="button muted-button">Edit</button></Link>
+                            <td className={styles.todobox}>{todo.text}</td>
+                            {/* <td className={styles.alignCenter}>{todo.owner}</td> */}
+                            <td className={styles.alignRight}>
+                                <Link to={`/todos/edit/${todo._id}`}><button className={styles.button}>Edit</button></Link>
                             </td>
-                            <td>
-                                <button type='submit' onClick={() => 
+                            <td className={styles.alignRight}>
+                                <button className={styles.button} type='submit' onClick={() => 
                                     handleDelete(todo._id)} 
-                                    className='btn btn-primary'>Delete</button>
+                                    >Delete</button>
                             </td>
                         </tr>
                     ))

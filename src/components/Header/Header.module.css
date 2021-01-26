@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
 .Header {
     padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: black;
+    background-color: lightblue;
     box-shadow: 3px 3px 5px 3px lightgray;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .Header > nav > ul {
     display: flex;
     /* REMOVES BULLET POINTS */
     list-style: none;
+}
+
+.headerbutton:hover {
+    color: navy;
 }
 
 .Header > nav > ul li {
@@ -22,4 +29,8 @@
 .Header a {
     text-decoration: none;
     color: white;
+}
+
+.logo {
+    width: 300px;
 }

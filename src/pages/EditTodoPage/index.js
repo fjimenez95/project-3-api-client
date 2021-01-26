@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import TodoForm from '../../components/TodoForm';
 import { useRouteMatch } from 'react-router-dom';
 import { getTodo } from '../../services/todoService'
+import styles from './EditTodoPage.module.css';
 
 function EditTodoPage(props) {
 
@@ -21,8 +22,7 @@ function EditTodoPage(props) {
     return todo ? (
         <div>
             <div className='mt-3'>
-                <h3>Edit Todo Item</h3>
-                <h2>{match.params.id}</h2>
+                <h3 className={styles.editTodoTitle}>Edit Todo Item</h3>
                 <TodoForm 
                     setUserTodos={props.setUserTodos}
                     todo={todo}
