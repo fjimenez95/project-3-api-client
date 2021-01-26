@@ -56,7 +56,7 @@ function LoginPage (props) {
                     name='password' />
                 <br />
                 <br />
-                <button className={styles.button}>
+                <button className={styles.button} type='submit'>
                     Login
                 </button>
             </form>
