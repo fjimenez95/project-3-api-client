@@ -13,7 +13,6 @@ A simple solution to help users list their todos. The objective is to be able to
 ## SCREENSHOTS :camera:
 
 ### WIREFRAME
-![image](https://i.imgur.com/KIAnsld.png)
 ![image](https://i.imgur.com/Ioa2wNe.jpg)
 ![image](https://i.imgur.com/fnqr3jE.jpg)
 ![image](https://i.imgur.com/FM3ZHL9.jpg)
